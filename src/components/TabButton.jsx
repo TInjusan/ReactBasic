@@ -1,12 +1,10 @@
-function TabButton({children}){
+function TabButton({children, onSelect}){
 
-    function handleClick(){
-        console.log("The one and only oyeah");
-    }
+    
 
     return (
             <li>
-                <button onClick={handleClick}>{children}</button>
+                <button onClick={onSelect}>{children}</button>
              </li>
         
         );
