@@ -2,11 +2,17 @@ import Header from "./components/Header/Header";
 import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
 import {CORE_CONCEPTS} from "./data.js";
- 
-function App() {
+import { useState } from "react";
 
+function App() {
+  const [selectedTopic, setSelectedTopic] = useState('Please click a button');
+  // useState always returns an array object that contains 2 items
+  // The value and the function that runs the component again
+  
   function handleSelect(selectedButton){
-    console.log(selectedButton);
+    setSelectedTopic(selectedButton);
+
+    console.log(selectedTopic);
 }
 
   return (
@@ -26,13 +32,13 @@ function App() {
           <section id="examples">
             <h2>Examples</h2>
             <menu>
-              <TabButton onSelect={ ()=> handleSelect('components')}>Components</TabButton>
+              <TabButton onSelect={()=> handleSelect('components')}>Components</TabButton>
               <TabButton onSelect={()=> handleSelect('jsx')}>JSX</TabButton>
               <TabButton onSelect={()=> handleSelect('props')}>Props</TabButton>
               <TabButton onSelect={()=> handleSelect('state')}>State</TabButton>
 
             </menu>
-            Dynamic Data
+            {selectedTopic}
           </section>
 
       </main>
