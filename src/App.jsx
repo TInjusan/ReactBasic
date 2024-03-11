@@ -2,17 +2,22 @@ import Header from "./components/Header/Header";
 import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
 import {CORE_CONCEPTS} from "./data.js";
+import {EXAMPLES} from "./data.js";
 import { useState } from "react";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState('Please click a button');
+  const [selectedTopic, setSelectedTopic] = useState('components');
   // useState always returns an array object that contains 2 items
   // The value and the function that runs the component again
   
   function handleSelect(selectedButton){
+    
+    //The line of code below is a function that updates the "selectedTopic" value
     setSelectedTopic(selectedButton);
 
-    console.log(selectedTopic);
+    //Displays the selected object
+    console.log("Executing");
+   
 }
 
   return (
@@ -38,7 +43,12 @@ function App() {
               <TabButton onSelect={()=> handleSelect('state')}>State</TabButton>
 
             </menu>
-            {selectedTopic}
+            <div id="tab-content">
+              <h3>  {EXAMPLES[selectedTopic].title} </h3>
+               <p >{EXAMPLES[selectedTopic].description}</p>
+              <code>{EXAMPLES[selectedTopic].code} </code>
+            </div>
+          
           </section>
 
       </main>
